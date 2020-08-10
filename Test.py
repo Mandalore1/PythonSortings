@@ -1,4 +1,6 @@
 from sortings import *
+import random
+import time
 
 
 def is_sorted(l: list, ascending=True):
@@ -18,6 +20,28 @@ def is_sorted(l: list, ascending=True):
     return True
 
 
-l = [3, 2, 1, 5, 5]
-l = bubble_sort(l, lambda a, b: b <= a)
-print(l)
+ascending = True
+
+l = []
+for i in range(0, 1500):
+    l.append(random.randint(10, 99))
+
+if ascending:
+    cmp = lambda a, b: b >= a
+else:
+    cmp = lambda a, b: b <= a
+
+current_milli_time = lambda: int(time.time() * 1000)
+
+print(f"l before sort is {l}")
+t1 = current_milli_time()
+
+l = shaker_sort(l, cmp)
+
+t2 = current_milli_time()
+print(f"l after sort is {l}")
+
+if is_sorted(l, ascending):
+    print(f"Sorted, it took {t2 - t1} milliseconds")
+else:
+    print("Not sorted")
