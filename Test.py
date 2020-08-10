@@ -36,7 +36,7 @@ current_milli_time = lambda: int(time.time() * 1000)
 print(f"l before sort is {l}")
 t1 = current_milli_time()
 
-l = shaker_sort(l, cmp)
+l = comb_sort(l, cmp)
 
 t2 = current_milli_time()
 print(f"l after sort is {l}")
