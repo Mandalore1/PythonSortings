@@ -101,4 +101,44 @@ def insertion_sort(l: list, cmp):
     return l
 
 
+def shell_sort(l: list, cmp):
+    """
+    :param l: сортируемый список
+    :param cmp: возвращает True, если второй аргумент должен стоять в большей позиции, чем первый
+    :return: отсортированный список
 
+    Сортировка Шелла
+    """
+
+    length = len(l)
+    step = length // 2
+    while step >= 1:
+        for i in range(step, len(l)):
+            for j in range(i, step - 1, -step):
+                if not cmp(l[j - step], l[j]):
+                    l[j], l[j - step] = l[j - step], l[j]
+                else:
+                    break
+        step //= 2
+
+    return l
+
+
+def selection_sort(l: list, cmp):
+    """
+    :param l: сортируемый список
+    :param cmp: возвращает True, если второй аргумент должен стоять в большей позиции, чем первый
+    :return: отсортированный список
+
+    Сортировка выбором
+    """
+
+    for i in range(0, len(l)):
+        m, mi = l[i], i
+        for j in range(i + 1, len(l)):
+            if not cmp(m, l[j]):
+                m, mi = l[j], j
+
+        l[i], l[mi] = l[mi], l[i]
+
+    return l
