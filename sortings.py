@@ -6,6 +6,7 @@ def bubble_sort(l: list, cmp):
 
     Пузырьковая сортировка
     """
+
     while True:
         sorted = True
         for i in range(1, len(l)):
@@ -27,6 +28,7 @@ def shaker_sort(l: list, cmp):
 
     Шейкерная сортировка
     """
+
     while True:
         sorted = True
         for i in range(1, len(l)):
@@ -51,7 +53,7 @@ def comb_sort(l: list, cmp):
     :param cmp: возвращает True, если второй аргумент должен стоять в большей позиции, чем первый
     :return: отсортированный список
 
-    Шейкерная сортировка
+    Сортировка расческой
     """
 
     length = len(l)
@@ -78,3 +80,25 @@ def comb_sort(l: list, cmp):
             break
 
     return l
+
+
+def insertion_sort(l: list, cmp):
+    """
+    :param l: сортируемый список
+    :param cmp: возвращает True, если второй аргумент должен стоять в большей позиции, чем первый
+    :return: отсортированный список
+
+    Сортировка вставками
+    """
+
+    for i in range(0, len(l)):
+        for j in range(i, 0, -1):
+            if not cmp(l[j - 1], l[j]):
+                l[j], l[j - 1] = l[j - 1], l[j]
+            else:
+                break
+
+    return l
+
+
+
